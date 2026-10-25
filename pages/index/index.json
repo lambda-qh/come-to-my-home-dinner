@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "来我家吃饭吧",
+  "usingComponents": {
+    "dish-card": "/components/dish-card/dish-card"
+  }
+}

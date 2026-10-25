@@ -1,0 +1,278 @@
+.detail-cover {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  background: #F0EDE6;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-letter-big {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120rpx;
+  font-weight: 300;
+  color: #B5B0A6;
+}
+
+.cover-wish {
+  position: absolute;
+  top: 24rpx;
+  right: 24rpx;
+  background: #3D3929;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+}
+
+.info-card {
+  padding: 30rpx;
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dish-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #3D3929;
+}
+
+/* 一句话描述：仿宋斜体 + 引号 */
+.detail-desc {
+  margin-top: 10rpx;
+  font-family: "FangSong", "STFangsong", "仿宋", serif;
+  font-style: italic;
+  font-size: 24rpx;
+  color: #8B857A;
+  line-height: 1.5;
+}
+
+.avg-block {
+  display: flex;
+  align-items: center;
+}
+
+.avg-num {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #DA7756;
+  margin-right: 10rpx;
+}
+
+.tag-row {
+  margin-top: 16rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block-label {
+  font-size: 24rpx;
+  color: #9B978D;
+  display: flex;
+  align-items: center;
+}
+
+.ing-block {
+  margin-top: 24rpx;
+}
+
+.ing-list {
+  margin-top: 14rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ing {
+  border: 1rpx solid #EDEBE4;
+  background: #FBFAF7;
+  color: #8B8B84;
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  margin: 0 12rpx 12rpx 0;
+}
+
+.rate-card {
+  margin-top: 20rpx;
+  padding: 30rpx;
+}
+
+.my-score-row {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.my-score-text {
+  font-size: 24rpx;
+  color: #9B978D;
+}
+
+.comment-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #FBFAF7;
+  border: 1rpx solid #EDEBE4;
+  border-radius: 16rpx;
+  padding: 18rpx 22rpx;
+  font-size: 26rpx;
+  margin-top: 18rpx;
+  min-height: 100rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+/* 评价图片上传区 */
+.upload-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.upload-img {
+  position: relative;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 14rpx 14rpx 0;
+}
+
+.upload-img-src {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.upload-del {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(61, 57, 41, 0.75);
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+}
+
+.upload-add {
+  width: 128rpx;
+  height: 128rpx;
+  border: 1rpx dashed #C9C4BC;
+  border-radius: 12rpx;
+  background: #FBFAF7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-plus {
+  font-size: 36rpx;
+  font-weight: 300;
+  color: #9B978D;
+  line-height: 1;
+}
+
+.upload-tip {
+  margin-top: 8rpx;
+  font-size: 18rpx;
+  color: #B5B0A6;
+}
+
+.upload-hint {
+  font-size: 18rpx;
+  color: #B5B0A6;
+}
+
+.review-card {
+  margin-top: 20rpx;
+  padding: 30rpx;
+}
+
+.review-count {
+  margin-left: 12rpx;
+  font-size: 22rpx;
+  color: #B5B0A6;
+  font-weight: 400;
+}
+
+.review-empty {
+  margin-top: 20rpx;
+  padding: 40rpx 0;
+  text-align: center;
+  color: #B5B0A6;
+  font-size: 24rpx;
+}
+
+.review-item {
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #F0EDE6;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+}
+
+.review-time {
+  margin-left: 14rpx;
+  font-size: 20rpx;
+  color: #B5B0A6;
+}
+
+.review-comment {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #57534A;
+  line-height: 1.6;
+}
+
+/* 评价图片网格 */
+.review-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12rpx;
+}
+
+.review-img {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 12rpx;
+  margin: 0 12rpx 12rpx 0;
+  background: #F0EDE6;
+}
+
+/* 操作栏：单按钮居中 */
+.action-bar {
+  margin: 24rpx 0 40rpx;
+}
+
+.action-btn {
+  width: 100%;
+  font-size: 24rpx;
+}

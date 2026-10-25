@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="form-card card">
+    <view class="form-item">
+      <view class="form-label">菜品图片</view>
+      <view class="image-picker">
+        <view wx:if="{{image}}" class="img-preview">
+          <image class="preview-img" src="{{image}}" mode="aspectFill"></image>
+          <view class="img-del" catch:tap="removeImage">×</view>
+        </view>
+        <view wx:else class="img-empty" bind:tap="chooseImage">
+          <text class="img-plus">＋</text>
+          <text class="img-tip">拍照 / 从相册选择</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">菜名 <text class="required">*</text></view>
+      <input class="form-input" placeholder="例如：番茄炒蛋" value="{{name}}" bind:input="onName" maxlength="20" />
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">一句话描述</view>
+      <input class="form-input" placeholder="例如：时令水八仙，鲜掉眉毛" value="{{desc}}" bind:input="onDesc" maxlength="30" />
+      <view class="form-tip">将展示在菜单的菜名与食材之间</view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">菜品标签</view>
+      <view wx:if="{{selectedTags.length}}" class="selected-tags">
+        <view class="sel-tag" wx:for="{{selectedTags}}" wx:key="*this">
+          <text>{{item}}</text>
+          <text class="sel-del" data-index="{{index}}" catch:tap="removeTag">×</text>
+        </view>
+      </view>
+      <view class="preset-row">
+        <view
+          class="preset-tag {{selectedTags.indexOf(item) > -1 ? 'on' : ''}}"
+          wx:for="{{presetTags}}"
+          wx:key="*this"
+          data-tag="{{item}}"
+          bind:tap="onPresetTag"
+        >{{item}}</view>
+      </view>
+      <view class="tag-input-row">
+        <input class="tag-input" placeholder="自定义标签，如：露营首选" value="{{tagInput}}" bind:input="onTagInput" maxlength="10" confirm-type="done" bind:confirm="addCustomTag" />
+        <view class="tag-add" bind:tap="addCustomTag">添加</view>
+      </view>
+      <view class="form-tip">菜单页可按这些标签分组展示</view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">主要食材 <text class="required">*</text></view>
+      <textarea class="form-textarea" placeholder="用顿号分隔，例如：番茄、鸡蛋、小葱" value="{{ingredientsText}}" bind:input="onIngredients" maxlength="100" auto-height></textarea>
+    </view>
+  </view>
+
+  <button class="btn-primary save-btn" bind:tap="save" loading="{{saving}}">保存菜品</button>
+</view>

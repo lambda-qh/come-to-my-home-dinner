@@ -1,0 +1,61 @@
+.wishlist-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.wish-head {
+  padding: 36rpx 10rpx 26rpx;
+}
+
+.wish-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wish-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  color: #3D3929;
+}
+
+.select-toggle {
+  font-size: 22rpx;
+  color: #9B978D;
+  border: 1rpx solid #E3E0D8;
+  padding: 6rpx 22rpx;
+  border-radius: 999rpx;
+}
+
+.select-toggle.active {
+  background: #3D3929;
+  color: #FFFFFF;
+  border-color: #3D3929;
+}
+
+.wish-sub {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #9B978D;
+}
+
+.poster-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 24rpx calc(20rpx + env(safe-area-inset-bottom));
+  background: #FFFFFF;
+  border-top: 1rpx solid #EDEBE4;
+  z-index: 10;
+}
+
+.poster-btn {
+  width: 100%;
+}
+
+/* 给底部按钮留出空间 */
+.wishlist-page .container {
+  padding-bottom: 180rpx;
+}

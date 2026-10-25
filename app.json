@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/edit/edit",
+    "pages/detail/detail",
+    "pages/wishlist/wishlist",
+    "pages/poster/poster",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FAF9F5",
+    "navigationBarTitleText": "来我家吃饭吧",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FAF9F5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9B978D",
+    "selectedColor": "#3D3929",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/wishlist/wishlist",
+        "text": "心愿单"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "管理"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

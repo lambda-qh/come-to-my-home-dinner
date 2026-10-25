@@ -1,0 +1,37 @@
+<view class="wishlist-page">
+  <view class="container">
+    <view class="wish-head">
+      <view class="wish-title-row">
+        <view class="wish-title">想吃清单</view>
+        <view class="select-toggle {{selectMode ? 'active' : ''}}" bind:tap="onSelectMode">{{selectMode ? '完成' : '多选'}}</view>
+      </view>
+      <view class="wish-sub">{{selectMode ? '勾选菜品，生成只含所选菜品的海报' : '收藏想吃的菜 · 一键生成愿望海报'}}</view>
+    </view>
+
+    <view wx:if="{{dishes.length}}">
+      <dish-card
+        wx:for="{{dishes}}"
+        wx:key="id"
+        dish="{{item}}"
+        tags="{{item.tags}}"
+        removable="{{true}}"
+        selectMode="{{selectMode}}"
+        selected="{{selectMode && selectedIds.indexOf(item.id) > -1}}"
+        data-id="{{item.id}}"
+        bind:tap="onCardTap"
+        bind:remove="onRemove"
+        bind:select="handleSelect"
+      ></dish-card>
+    </view>
+
+    <view wx:else class="empty-tip">
+      <text>清单还是空的，去菜单里收藏几道想吃的菜吧</text>
+    </view>
+  </view>
+
+  <view class="poster-bar">
+    <button class="btn-primary poster-btn" bind:tap="goPoster">
+      {{selectMode ? (selectedIds.length ? '生成海报（' + selectedIds.length + '）' : '请勾选菜品') : '一键生成愿望海报'}}
+    </button>
+  </view>
+</view>

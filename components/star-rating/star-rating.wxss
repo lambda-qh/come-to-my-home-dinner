@@ -1,0 +1,14 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  color: #E3E0D8;
+  line-height: 1;
+  margin-right: 6rpx;
+}
+
+.star.on {
+  color: #DA7756;
+}

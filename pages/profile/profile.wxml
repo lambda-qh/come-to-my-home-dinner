@@ -1,0 +1,140 @@
+<view class="container">
+  <view class="admin-head">
+    <view class="avatar">主</view>
+    <view class="admin-name">私房厨房主理人</view>
+    <view class="admin-sub">仅作者可见 · 菜品管理 · 点单私信 · 饭局</view>
+  </view>
+
+  <view class="sub-tabs card">
+    <view class="sub-tab {{tab === 'data' ? 'active' : ''}}" data-tab="data" bind:tap="onTab">菜品数据</view>
+    <view class="sub-tab {{tab === 'messages' ? 'active' : ''}}" data-tab="messages" bind:tap="onTab">
+      点单私信
+      <text wx:if="{{unreadCount}}" class="unread-dot">{{unreadCount}}</text>
+    </view>
+    <view class="sub-tab {{tab === 'feasts' ? 'active' : ''}}" data-tab="feasts" bind:tap="onTab">饭局</view>
+  </view>
+
+  <!-- ========== 菜品数据 ========== -->
+  <block wx:if="{{tab === 'data'}}">
+    <view class="stat-grid">
+      <view class="stat-item card">
+        <text class="stat-num">{{stats.dishCount}}</text>
+        <text class="stat-label">收录菜品</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-num">{{stats.totalRatings}}</text>
+        <text class="stat-label">累计评价</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-num">{{stats.wishCount}}</text>
+        <text class="stat-label">清单收藏</text>
+      </view>
+      <view class="stat-item card">
+        <text class="stat-num">{{stats.totalVisits7d}}</text>
+        <text class="stat-label">近7天点单</text>
+      </view>
+    </view>
+
+    <view class="section-head">
+      <view class="section-title">菜品数据</view>
+      <view class="section-sub">点击查看评价详情</view>
+    </view>
+
+    <view wx:if="{{rows.length}}" class="card data-list">
+      <view wx:for="{{rows}}" wx:key="id" class="data-row" data-id="{{item.id}}" bind:tap="goDetail">
+        <view class="row-cover">
+          <image wx:if="{{item.image}}" class="row-img" src="{{item.image}}" mode="aspectFill"></image>
+          <text wx:else class="row-letter">{{item.firstChar}}</text>
+        </view>
+        <view class="row-main">
+          <view class="row-name">{{item.name}}</view>
+          <view wx:if="{{item.tags.length}}" class="row-tags">
+            <text class="row-tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+          </view>
+          <view class="row-meta">评价 {{item.ratingCount}} · 想吃 {{item.wishCount}} · 近7天 {{item.visit7d}} 单</view>
+        </view>
+        <view class="row-right">
+          <text class="row-score">{{item.avgText}}</text>
+          <view class="row-ops">
+            <view class="row-op" catch:tap="goEdit" data-id="{{item.id}}">编辑</view>
+            <view class="row-op danger" catch:tap="onDeleteDish" data-id="{{item.id}}">删除</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-tip">
+      <text>还没有菜品，去发布第一道拿手菜吧</text>
+    </view>
+
+    <view class="manage-card card">
+      <view class="manage-title">发布与数据管理</view>
+      <button class="btn-primary manage-btn" bind:tap="goAdd">＋ 发布新菜品</button>
+      <button class="btn-ghost manage-btn" bind:tap="resetSeed">重置为示例数据</button>
+      <button class="btn-ghost manage-btn danger" bind:tap="clearAll">清空全部数据</button>
+    </view>
+  </block>
+
+  <!-- ========== 点单私信 ========== -->
+  <block wx:if="{{tab === 'messages'}}">
+    <view class="section-head">
+      <view class="section-title">点单私信</view>
+      <view class="section-sub">来自想吃清单的转发</view>
+    </view>
+
+    <view wx:if="{{messages.length}}" class="card msg-list">
+      <view wx:for="{{messages}}" wx:key="id" class="msg-item" data-id="{{item.id}}" bind:tap="previewMessage">
+        <view class="msg-poster-wrap">
+          <image wx:if="{{item.poster}}" class="msg-poster" src="{{item.poster}}" mode="aspectFill"></image>
+          <view wx:else class="msg-poster-empty">清单</view>
+          <view wx:if="{{!item.read}}" class="msg-unread">未读</view>
+        </view>
+        <view class="msg-main">
+          <view class="msg-dishes">{{item.dishes.length ? item.dishes.join(' · ') : '点单清单'}}</view>
+          <view class="msg-meta">{{item.note}} · {{item.timeText}}</view>
+        </view>
+        <view class="msg-del" catch:tap="removeMessage" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+    <view wx:else class="empty-tip">
+      <text>还没有收到点单私信，转发「一键转发厨子」后会出现在这里</text>
+    </view>
+  </block>
+
+  <!-- ========== 饭局 ========== -->
+  <block wx:if="{{tab === 'feasts'}}">
+    <view class="card feast-form">
+      <view class="manage-title">创建饭局</view>
+      <input class="form-input" placeholder="饭局名称，如：周末来我家吃饭" value="{{feastTitle}}" bind:input="onFeastTitle" maxlength="20" />
+      <picker mode="date" value="{{feastDate}}" bind:change="onFeastDate">
+        <view class="form-input picker-row">{{feastDate || '选择饭局日期'}}</view>
+      </picker>
+      <textarea class="form-textarea" placeholder="备注（选填）：几点开饭、自带酒水…" value="{{feastNote}}" bind:input="onFeastNote" maxlength="100" auto-height></textarea>
+      <button class="btn-primary manage-btn" bind:tap="createFeast">创建饭局</button>
+      <view class="feast-tip">创建后可为饭局生成邀请海报，朋友从海报进入即向这场饭局点单</view>
+    </view>
+
+    <view class="section-head">
+      <view class="section-title">我的饭局</view>
+    </view>
+
+    <view wx:if="{{feasts.length}}" class="card feast-list">
+      <view wx:for="{{feasts}}" wx:key="id" class="feast-item">
+        <view class="feast-main" data-id="{{item.id}}" bind:tap="previewFeastPoster">
+          <view class="feast-title">{{item.title}}</view>
+          <view class="feast-meta">{{item.date || '时间待定'}}<text wx:if="{{item.note}}"> · {{item.note}}</text></view>
+          <view wx:if="{{item.poster}}" class="feast-has-poster">已生成海报</view>
+        </view>
+        <view class="feast-ops">
+          <view class="row-op" catch:tap="genFeastPoster" data-id="{{item.id}}">{{item.poster ? '重新生成' : '生成海报'}}</view>
+          <view class="row-op danger" catch:tap="removeFeast" data-id="{{item.id}}">删除</view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-tip">
+      <text>还没有饭局，创建一场邀请大家来点菜吧</text>
+    </view>
+  </block>
+
+  <!-- 饭局海报隐藏画布（屏外定位，不可见但可绘制） -->
+  <canvas type="2d" id="feastCanvas" class="feast-canvas-hidden"></canvas>
+</view>

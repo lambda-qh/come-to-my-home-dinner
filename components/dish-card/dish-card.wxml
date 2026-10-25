@@ -1,0 +1,30 @@
+<view class="dish-card card {{selectMode ? (selected ? 'selected' : 'dim') : ''}}">
+  <view class="dish-top">
+    <view class="dish-cover">
+      <image wx:if="{{dish.image}}" class="cover-img" src="{{dish.image}}" mode="aspectFill"></image>
+      <view wx:else class="cover-letter">{{firstChar}}</view>
+
+      <view wx:if="{{selectMode}}" class="select-indicator {{selected ? 'on' : ''}}" catch:tap="onSelect">{{selected ? '✓' : ''}}</view>
+      <view wx:elif="{{dish.wished}}" class="wish-badge">已在清单</view>
+      <view wx:if="{{removable && !selectMode}}" class="remove-btn" catch:tap="onRemove">×</view>
+    </view>
+    <view class="dish-info">
+      <view class="dish-name">{{dish.name}}</view>
+      <view wx:if="{{desc}}" class="dish-desc">“{{desc}}”</view>
+      <view class="dish-ingredients">
+        <text class="ing" wx:for="{{dish.ingredients}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="dish-meta">
+        <view class="score-block">
+          <text class="score-num">{{avgText}}</text>
+          <star-rating value="{{avg}}" readonly size="24"></star-rating>
+        </view>
+        <text class="rating-count">{{count}} 条评价</text>
+      </view>
+    </view>
+  </view>
+  <view class="tag-row" wx:if="{{customTags.length || tags.length}}">
+    <text class="custom-tag" wx:for="{{customTags}}" wx:key="*this">{{item}}</text>
+    <text class="tag tag-{{item.type}}" wx:for="{{tags}}" wx:key="text">{{item.text}}</text>
+  </view>
+</view>

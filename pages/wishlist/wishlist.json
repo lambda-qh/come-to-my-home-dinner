@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的心愿单",
+  "usingComponents": {
+    "dish-card": "/components/dish-card/dish-card"
+  }
+}

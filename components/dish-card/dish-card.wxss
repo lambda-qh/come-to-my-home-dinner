@@ -1,0 +1,186 @@
+.dish-card {
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.dish-card.selected {
+  border-color: #DA7756;
+  box-shadow: 0 0 0 2rpx rgba(218, 119, 86, 0.25);
+}
+
+.dish-card.dim {
+  opacity: 0.6;
+}
+
+.dish-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dish-cover {
+  position: relative;
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #F0EDE6;
+  flex-shrink: 0;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-letter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56rpx;
+  font-weight: 300;
+  color: #B5B0A6;
+}
+
+.wish-badge {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  background: #3D3929;
+  color: #FFFFFF;
+  font-size: 18rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+}
+
+/* 多选勾选指示 */
+.select-indicator {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2rpx solid #C9C4BC;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.select-indicator.on {
+  background: #DA7756;
+  border-color: #DA7756;
+  color: #FFFFFF;
+}
+
+/* 移除按钮 */
+.remove-btn {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: rgba(61, 57, 41, 0.72);
+  color: #FFFFFF;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.dish-info {
+  flex: 1;
+  margin-left: 24rpx;
+  overflow: hidden;
+}
+
+.dish-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #3D3929;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 一句话描述：仿宋斜体 + 引号 */
+.dish-desc {
+  margin-top: 6rpx;
+  font-family: "FangSong", "STFangsong", "仿宋", serif;
+  font-style: italic;
+  font-size: 22rpx;
+  color: #8B857A;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dish-ingredients {
+  margin-top: 10rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ing {
+  border: 1rpx solid #EDEBE4;
+  background: #FBFAF7;
+  color: #8B8B84;
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  margin: 0 10rpx 10rpx 0;
+}
+
+.dish-meta {
+  margin-top: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score-block {
+  display: flex;
+  align-items: center;
+}
+
+.score-num {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #DA7756;
+  margin-right: 10rpx;
+}
+
+.rating-count {
+  font-size: 20rpx;
+  color: #B5B0A6;
+}
+
+.tag-row {
+  margin-top: 16rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 自定义分组标签：描边浅色 */
+.custom-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 20rpx;
+  border: 1rpx solid #C9C4BC;
+  background: #FBFAF7;
+  color: #6B665C;
+  margin: 0 16rpx 12rpx 0;
+  line-height: 1.5;
+}

@@ -1,0 +1,9 @@
+# 微信开发者工具自动生成的本地私密配置（含本机路径，勿上传）
+project.private.config.json
+
+# 依赖
+node_modules/
+
+# 系统与编辑器
+.DS_Store
+*.log

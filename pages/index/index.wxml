@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="hero">
+    <view class="hero-title">来我家吃饭吧</view>
+    <view class="hero-sub">我家的私房菜单 · 共 {{stats.dishCount}} 道拿手菜</view>
+  </view>
+
+  <view class="menu-main">
+    <!-- 左侧分类侧边栏：全部 + 各自定义标签 -->
+    <scroll-view class="side-bar" scroll-y show-scrollbar="{{false}}">
+      <view class="side-item {{activeGroup === 'all' ? 'active' : ''}}" data-group="all" bind:tap="onGroup">全部</view>
+      <view
+        wx:for="{{groupTags}}"
+        wx:key="*this"
+        class="side-item {{activeGroup === item ? 'active' : ''}}"
+        data-group="{{item}}"
+        bind:tap="onGroup"
+      >{{item}}</view>
+    </scroll-view>
+
+    <!-- 右侧菜品列表 -->
+    <view class="side-content">
+      <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}">
+        <view class="sort-bar card">
+          <view class="sort-item {{sortType === 'default' ? 'active' : ''}}" data-type="default" bind:tap="onSort">默认</view>
+          <view class="sort-item {{sortType === 'score' ? 'active' : ''}}" data-type="score" bind:tap="onSort">评分榜</view>
+          <view class="sort-item {{sortType === 'hot' ? 'active' : ''}}" data-type="hot" bind:tap="onSort">人气榜</view>
+        </view>
+
+        <view wx:if="{{display.length}}">
+          <dish-card
+            wx:for="{{display}}"
+            wx:key="id"
+            dish="{{item}}"
+            tags="{{item.tags}}"
+            data-id="{{item.id}}"
+            bind:tap="goDetail"
+          ></dish-card>
+        </view>
+        <view wx:else class="empty-tip">
+          <text>这个分组还没有菜品，去添加或给菜品打上对应标签吧</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="fab" bind:tap="goAdd">＋</view>
+</view>

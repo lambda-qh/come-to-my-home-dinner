@@ -1,0 +1,16 @@
+<view class="poster-page">
+  <view wx:if="{{hasDish}}" class="poster-body">
+    <view class="canvas-wrap">
+      <canvas type="2d" id="posterCanvas" class="poster-canvas"></canvas>
+    </view>
+    <view class="poster-hint">已选 {{dishes.length}} 道想吃 · 转发给主理人安排</view>
+    <button class="btn-primary save-btn" bind:tap="sendToChef" loading="{{busy}}">一键转发厨子</button>
+    <button class="btn-ghost back-btn" bind:tap="saveToAlbum">保存到相册</button>
+    <button class="btn-ghost back-btn" bind:tap="goBack">返回清单</button>
+  </view>
+
+  <view wx:else class="empty-tip">
+    <text>想吃清单还是空的，先去菜单里收藏几道菜吧</text>
+    <button class="btn-primary go-btn" bind:tap="goHome">去选菜</button>
+  </view>
+</view>

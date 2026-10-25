@@ -1,0 +1,10 @@
+<view class="star-rating">
+  <view
+    wx:for="{{stars}}"
+    wx:key="*this"
+    class="star {{item <= value ? 'on' : ''}}"
+    style="font-size: {{size}}rpx;"
+    data-v="{{item}}"
+    bind:tap="onTap"
+  >{{item <= value ? '★' : '☆'}}</view>
+</view>

@@ -1,0 +1,45 @@
+.poster-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx;
+}
+
+.poster-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-wrap {
+  width: 345px;
+  height: 690px;
+  border-radius: 24rpx;
+  overflow: hidden;
+  border: 1rpx solid #EDEBE4;
+  box-shadow: 0 10rpx 30rpx rgba(61, 57, 41, 0.06);
+}
+
+.poster-canvas {
+  width: 345px;
+  height: 690px;
+}
+
+.poster-hint {
+  margin: 24rpx 0 20rpx;
+  font-size: 22rpx;
+  color: #9B978D;
+}
+
+.save-btn {
+  width: 100%;
+}
+
+.back-btn {
+  width: 100%;
+  margin-top: 16rpx;
+}
+
+.go-btn {
+  margin-top: 30rpx;
+  width: 60%;
+}
